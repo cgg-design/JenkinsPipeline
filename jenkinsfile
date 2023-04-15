@@ -2,7 +2,6 @@ pipeline {
     agent any
     triggers {
         upstream(
-            upstreamProjects: "Integration Test  Smoke",
             threshold: hudson.model.Result.ABORTED
         )
     }    
