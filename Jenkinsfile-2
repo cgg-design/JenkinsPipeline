@@ -4,15 +4,11 @@ pipeline {
         string(name: 'FROM_BUILD', defaultValue: '', description: 'Build Source')
     }
     stages {
-        stage("Build smoke") {
+        stage("Deploy") {
             steps {
-                echo "Hello Build!"
+                echo "Build deploy from Source ${params.FROM_BUILD}"
             }
         }
-        stage("Test") {
-            steps {
-                echo "Hello Test!"
-            }
-        }
+
     }
 }
