@@ -3,6 +3,7 @@ pipeline {
     triggers {
         upstream "Integration Test  Smoke"
     }
+    
     stages {
         stage('Start') {
             steps {
