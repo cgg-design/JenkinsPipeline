@@ -15,7 +15,8 @@ pipeline {
                             echo "Smoke test status: ${smokeJob.result}"
                             //currentBuild.result = 'ABORTED' 
                             echo "currentResult Failed: ${currentBuild.number}"
-                            echo "currentStage name: ${currentStage.name}"
+                            updateGitlabCommitStatus name: STAGE_NAME, state: 'running'
+                            echo 'Stage name: ${STAGE_NAME}'
                             error('Build is aborted due to failure of build stage ${smokeJob.number} of smoke test')
                         }
                 }
