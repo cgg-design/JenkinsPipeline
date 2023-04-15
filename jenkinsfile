@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        upstream "Pipeline Integration Test  Smoke"
+        upstream "Integration Test  Smoke"
     }
     stages {
         stage('Start') {
