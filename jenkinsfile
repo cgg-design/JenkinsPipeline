@@ -1,8 +1,11 @@
 pipeline {
     agent any
     triggers {
-        upstream "Integration Test  Smoke"
-    }
+        upstream(
+            upstreamProjects: "Integration Test  Smoke",
+            threshold: hudson.model.Result.UNSTABLE
+        )
+    }    
     stages {
         stage('Start') {
             steps {
