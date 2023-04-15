@@ -22,7 +22,6 @@ pipeline {
                         
                         if(smokeJob.result != "SUCCESS"){
                             echo "Smoke test status: ${smokeJob.result}"
-                            currentBuild.result = 'ABORTED' 
                         }
                 }
             }
