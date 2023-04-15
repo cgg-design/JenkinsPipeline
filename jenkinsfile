@@ -1,9 +1,8 @@
 pipeline {
     agent any
     triggers {
-        upstream "IntegrationTestSmoke"
-        // upstream "my-upstream-project1,my-upstream-project2"
-    }  
+      upstream(upstreamProjects: "IntegrationTestSmoke/", threshold: hudson.model.Result.SUCCESS)
+    }    
     stages {
         stage('Start') {
             steps {
