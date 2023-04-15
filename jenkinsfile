@@ -3,7 +3,7 @@ pipeline {
     triggers {
         upstream(
             upstreamProjects: "Integration Test  Smoke",
-            threshold: hudson.model.Result.UNSTABLE
+            threshold: hudson.model.Result.ABORTED
         )
     }    
     stages {
