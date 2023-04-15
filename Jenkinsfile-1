@@ -3,7 +3,7 @@ pipeline {
     stages {
        stage('Smoke') {
           steps {
-                sh 'pass'
+                echo 'Smoke'
            }
         }
        stage('Prepare_Test_Environment') {
