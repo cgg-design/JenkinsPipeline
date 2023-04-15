@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    parameters{
+        string(name: 'FROM_BUILD', defaultValue: '', description: 'Build Source')
+    }
     stages {
         stage("Build smoke") {
             steps {
