@@ -22,6 +22,8 @@ pipeline {
                         
                         if(smokeJob.result != "SUCCESS"){
                             echo "Smoke test status: ${smokeJob.result}"
+                            //currentBuild.result = 'ABORTED' 
+                            error('Build is aborted due to failure of build stage')
                         }
                 }
             }
