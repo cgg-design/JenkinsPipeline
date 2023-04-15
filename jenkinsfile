@@ -15,8 +15,8 @@ pipeline {
                             echo "Smoke test status: ${smokeJob.result}"
                             //currentBuild.result = 'ABORTED' 
                             echo "currentResult Failed: ${currentBuild.number}"
-                            echo "Init result: ${smokeJob.number}"
-                            error('Build is aborted due to failure of build stage')
+                            echo "currentResult Failed: ${currentStage.name}"
+                            error('Build is aborted due to failure of build stage ${smokeJob.number} of smoke test')
                         }
                 }
             }
