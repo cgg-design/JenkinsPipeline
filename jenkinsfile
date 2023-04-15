@@ -1,10 +1,9 @@
 pipeline {
     agent any
     triggers {
-        upstream(
-            threshold: hudson.model.Result.ABORTED
-        )
-    }    
+        upstream "IntegrationTestSmoke"
+        // upstream "my-upstream-project1,my-upstream-project2"
+    }  
     stages {
         stage('Start') {
             steps {
