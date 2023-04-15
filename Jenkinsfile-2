@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage("Smoke") {
             steps {
-                echo "Build smoke test "
+                //echo "Build smoke test "
+                sh 'fail'
             }
         }
 
