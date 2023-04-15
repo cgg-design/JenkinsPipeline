@@ -1,17 +1,24 @@
 pipeline {
     agent any
-    triggers {
-      upstream(upstreamProjects: "IntegrationTestSmoke/", threshold: hudson.model.Result.SUCCESS)
-    }    
+    parameters{
+        string(name: 'TARGET_ENV', defaultValue: 'PROD', description: 'Environment')
+    }
+  
     stages {
         stage('Start') {
             steps {
                 echo 'Hello World'
+                sleep 5
             }
         }
         stage('Build') {
             steps {
-                echo 'Building'
+                script{
+                    build job: 'IntegrationTestSmoke'
+                        parameters{
+                             [string($class: 'StringParameterValue', name: 'FROM_BUILD', value: "${BUILD_NUMBER}")]
+                        }
+                }
             }
         }
         stage('Deploy') {
