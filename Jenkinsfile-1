@@ -13,7 +13,7 @@ pipeline {
        }
         stage('Test Run: DPR/API tests') {
             steps {
-                print("\n Test Run: DPR/API tests! \n")
+                echo 'Test Run: DPR/API tests!'
             }
         }
         stage('publish results') {
