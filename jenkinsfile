@@ -14,11 +14,15 @@ pipeline {
         stage('Build') {
             steps {
                 script{
-                    build job: 'IntegrationTestSmoke'
-                        parameters:[
+                    def smokeJob = build job: 'IntegrationTestSmoke', propagate: false
+                        parameters: [
                              [$class: 'StringParameterValue', name: 'FROM_BUILD', value: "${BUILD_NUMBER}" ],
                              [$class: 'BooleanParameterValue', name: 'IS_READY', value: true]
                         ]
+                        
+                        if(smokeJob.result != "SUCCESS"){
+                            echo "Smoke test status: ${smokeJob.result}"
+                        }
                 }
             }
         }
