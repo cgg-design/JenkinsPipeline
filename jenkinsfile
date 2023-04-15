@@ -16,7 +16,8 @@ pipeline {
                 script{
                     build job: 'IntegrationTestSmoke'
                         parameters{
-                             [string($class: 'StringParameterValue', name: 'FROM_BUILD', value: "${BUILD_NUMBER}")]
+                             [string($class: 'StringParameterValue', name: 'FROM_BUILD', value: "${BUILD_NUMBER}")],
+                             [string($class: 'BooleanParameterValue', name: 'IS_READY', value: true)]
                         }
                 }
             }
