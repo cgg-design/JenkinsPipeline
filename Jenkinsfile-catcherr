@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Hello') {
       steps {
-        catchError(message:'news',buildResult:'UNSTABLE',stageResult:'UNSTABLE') {
+        catchError(message:'Stage build failed ',stageResult:'UNSTABLE') {
           sh 'exit 1'
         }
       }
