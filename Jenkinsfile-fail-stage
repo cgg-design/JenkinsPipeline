@@ -9,10 +9,10 @@ pipeline {
             parallel {
                 stage('Building') {
                     steps {
-                        sh 'fail'
+                        failFast true
                         sh "mvn clean install  |  tee output.log"
 
-                        sh '! grep "FAILURE" output.log'
+                        sh '! grep "WARNING" output.log'
 
                         script {
                             BUILD_COMPLETE = true
@@ -23,7 +23,7 @@ pipeline {
                     steps {
                         script {
                             while (BUILD_COMPLETE != true) {
-                                sh '! grep "FAILURE" output.log'
+                                sh '! grep "WARNING" output.log'
                             }
                         }
                     }
