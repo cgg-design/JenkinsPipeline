@@ -5,11 +5,11 @@ pipeline {
     }
     stages {
         stage('Build') {
-            sh 'fail'
+           //failFast true
             parallel {
                 stage('Building') {
                     steps {
-                        
+                        sh 'fail'
                         sh "mvn clean install  |  tee output.log"
 
                         sh '! grep "FAILURE" output.log'
