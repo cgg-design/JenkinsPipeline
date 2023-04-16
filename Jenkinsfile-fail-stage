@@ -5,7 +5,6 @@ pipeline {
     }
     stages {
         stage('Build') {
-            //failFast true
             sh 'fail'
             parallel {
                 stage('Building') {
