@@ -1,0 +1,26 @@
+pipeline {
+    agent any    
+    stages {
+       stage('Smoke') {
+          steps {
+                echo 'Smoke'
+           }
+        }
+       stage('Prepare_Test_Environment') {
+          steps {
+             echo 'reInitPlc()'
+          }
+       }
+        stage('Test Run: DPR/API tests') {
+            steps {
+                echo 'Test Run: DPR/API tests!'
+            }
+        }
+        stage('publish results') {
+            steps{
+               print("\n publish results! \n")
+            }
+        }
+    }
+
+}
